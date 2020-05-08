@@ -10,7 +10,7 @@ MODULE epi
     REAL, DIMENSION (65536) :: rexp
     INTEGER, PARAMETER :: e_navg = 100000, i_or_r = -1, none = -2
 
-    PRIVATE :: r, sr, rexp
+    PRIVATE :: r, sr, rexp, i_or_r, none
 
     CONTAINS
 ! ---------------------------------------------------------------------------
