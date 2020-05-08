@@ -8,7 +8,7 @@ gfortran -Ofast -march=native -o fsir pcg_rng.f08 nwk.f08 heap.f08 epi.f08 sir.f
 
 The input network format is a bit unusual. The nodes need to be encoded by numbers from 1 to N. The first line gives the number of nodes and links. The following N lines gives the first and last index of the neighbors of the nodes in the array of neighbors. The following 2M lines gives the neighbors. A o-o-o network could thus be encoded as:
 
-`3 2  
+`3 2\
 1 1  
 2 3  
 4 4  
