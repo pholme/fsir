@@ -4,7 +4,6 @@ This is Fortran implementation of my network SIR code: https://github.com/pholme
 Compile the code like this (with gfortran)
 
 ```
-gfortran -Ofast -march=native -c pcg_rng.f08 nwk.f08 heap.f08 epi.f08 sir.f08
 gfortran -Ofast -march=native -o fsir pcg_rng.f08 nwk.f08 heap.f08 epi.f08 sir.f08
 ```
 
