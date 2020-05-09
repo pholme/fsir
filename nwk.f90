@@ -40,7 +40,7 @@ MODULE nwk
     END SUBROUTINE
 
 ! ---------------------------------------------------------------------------
-    SUBROUTINE clean_nwk () !just deallocating
+    SUBROUTINE clean_nwk () ! just deallocating
         DEALLOCATE(n_time)
         DEALLOCATE(n_first)
         DEALLOCATE(n_last)
