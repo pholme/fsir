@@ -11,7 +11,6 @@ MODULE heap
     CONTAINS
 
 ! ---------------------------------------------------------------------------
-
     RECURSIVE SUBROUTINE down_heap (here)
         IMPLICIT NONE
         INTEGER :: itmp, smallest, left, right, here
@@ -38,7 +37,6 @@ MODULE heap
     END SUBROUTINE
 
 ! ---------------------------------------------------------------------------
-
     SUBROUTINE up_heap (start)
         IMPLICIT NONE
         INTEGER :: above, here, mem, start
@@ -63,7 +61,6 @@ MODULE heap
     END SUBROUTINE
 
 ! ---------------------------------------------------------------------------
-
     SUBROUTINE del_root ()
         IMPLICIT NONE
         INTEGER :: i
