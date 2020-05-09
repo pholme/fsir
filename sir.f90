@@ -33,7 +33,7 @@ PROGRAM sir
         CALL sum_s()
     END DO
 
-    !printing and exiting
+    ! printing and exiting
     CALL print_stats()
     CALL clean_nwk()
     CALL clean_heap()
