@@ -1,7 +1,7 @@
 # fsir
 This is Fortran implementation of my network SIR code: https://github.com/pholme/sir/
 
-Compile the code like this (with gfortran)
+Compile the code (I tried ifort as well as gfortran):
 
 ```
 gfortran -Ofast pcg_rng.f90 nwk.f90 heap.f90 epi.f90 sir.f90 -o fsir
