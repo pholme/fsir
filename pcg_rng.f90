@@ -8,6 +8,10 @@ MODULE pcg_rng
     USE,INTRINSIC :: ISO_FORTRAN_ENV
     IMPLICIT NONE
     INTEGER(KIND=INT64) :: p_state
+    INTEGER(KIND=INT32) :: mem
+    LOGICAL :: generate_new = .TRUE.
+
+    PRIVATE :: mem, generate_new
 
     CONTAINS
 
@@ -35,10 +39,27 @@ MODULE pcg_rng
 
         DO WHILE (.TRUE.)
             r = AND(pcg_32(),2147483647_INT32)
-            IF (r.LE.threshold) EXIT
+            IF (r.LT.threshold) EXIT
         END DO
 
-        pcg_32_bounded = 1 + MOD(r,bound)
+        pcg_32_bounded = MOD(r,bound) + 1
+    END FUNCTION
+
+! ---------------------------------------------------------------------------
+    ! 32-bit number from 1 to 2^16
+    FUNCTION pcg_16 ()
+        IMPLICIT NONE
+        INTEGER(KIND=INT32) :: pcg_16
+
+        IF (generate_new) THEN
+            mem = pcg_32()
+            generate_new = .FALSE.
+            pcg_16 = ISHFT(mem,-16) + 1
+        ELSE
+            generate_new = .TRUE.
+            pcg_16 = AND(mem,65535_INT32) + 1
+        END IF
+
     END FUNCTION
 
 END MODULE
