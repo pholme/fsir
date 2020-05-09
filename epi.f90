@@ -10,7 +10,7 @@ MODULE epi
     REAL, DIMENSION (65536) :: rexp
     INTEGER, PARAMETER :: e_navg = 100000, i_or_r = -1, none = -2
 
-    PRIVATE :: r, sr, rexp, i_or_r, none
+    PRIVATE :: sr, r, rexp, i_or_r, none
 
     CONTAINS
 ! ---------------------------------------------------------------------------
@@ -68,7 +68,7 @@ MODULE epi
         CALL del_root()
 
         h_ninx(me) = i_or_r
-        n_time(me) = n_time(me) + rexp(pcg_32_bounded(65536)) * e_beta
+        n_time(me) = n_time(me) + rexp(pcg_16()) * e_beta
 
         r(1) = r(1) + 1.0
         IF (r(2).LT.n_time(me)) r(2) = n_time(me)
@@ -76,7 +76,7 @@ MODULE epi
         DO i = n_first(me),n_last(me)
             you = n_nb(i)
             IF (h_ninx(you).NE.i_or_r) THEN
-                t = now + rexp(pcg_32_bounded(65536))
+                t = now + rexp(pcg_16())
                 ! if a new infection time of you is earlier than the current and earlier than the recovery time of me, then put the infection on the heap
                 IF ((t.LT.n_time(me)).AND.(t.LT.n_time(you))) THEN
                     n_time(you) = t
